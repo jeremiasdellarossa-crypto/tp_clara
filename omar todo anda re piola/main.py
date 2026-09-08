@@ -31,6 +31,21 @@ while True:
     frame = detector.dibujar(frame, resultado)
    
     gesto = detector.detectar_gesto(resultado)
+    
+    if gesto == "MANO ABIERTA":
+        accion = "ACTIVAR"
+
+    elif gesto == "PUÑO":
+        accion = "DETENER"
+
+    elif gesto == "DOS DEDOS":
+        accion = "CAMBIAR"
+
+    elif gesto == "UN DEDO":
+        accion = "SELECCIONAR"
+
+    else:
+        accion = ""
 
     cv2.putText(
         frame,
@@ -40,7 +55,14 @@ while True:
         1,
         (0, 255, 0),
         2)
-
+    cv2.putText(
+        frame,
+        accion,
+        (30, 90),
+        cv2.FONT_HERSHEY_SIMPLEX,
+        0.8,
+        (255, 255, 255),
+        2)
     cv2.imshow("HOLO-AI - Vision Artificial", frame)
 
     if cv2.waitKey(1) & 0xFF == ord("q"):
