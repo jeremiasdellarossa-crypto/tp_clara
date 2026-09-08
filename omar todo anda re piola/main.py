@@ -12,9 +12,9 @@ if not camara.abrir():
     exit()
 
 
-print("🟢 Cámara funcionando")
-print("🧠 MediaPipe iniciado")
-print("👋 Colocá una mano frente a la cámara")
+print("Cámara funcionando")
+print(" MediaPipe iniciado")
+print(" Colocá una mano frente a la cámara")
 print("Presioná Q para salir")
 
 
@@ -23,7 +23,7 @@ while True:
     ret, frame = camara.leer()
 
     if not ret:
-        print("❌ No se pudo leer el frame")
+        print("No se pudo leer el frame")
         break
 
     resultado = detector.detectar(frame)

@@ -13,10 +13,10 @@ class Camara:
         self.camara = cv2.VideoCapture(self.indice)
 
         if not self.camara.isOpened():
-            print("❌ ERROR: No se pudo abrir la cámara")
+            print(" ERROR: No se pudo abrir la cámara")
             return False
 
-        print("🟢 Cámara abierta correctamente")
+        print(" Cámara abierta correctamente")
         return True
 
     def leer(self):
