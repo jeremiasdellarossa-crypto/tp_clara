@@ -1,0 +1,5 @@
+import pyttsx3
+voz = pyttsx3.init()
+voz.save_to_file("Hola, soy tu holograma", "voz.wav")
+voz.runAndWait()
+print("Audio generado correctamente")
