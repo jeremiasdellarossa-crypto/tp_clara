@@ -155,11 +155,16 @@ while running:
     pygame.draw.rect(screen, BLUE_ROBOT, (cx - 25, current_y + 20 - crouch_offset, 18, leg_height), border_radius=5)
     pygame.draw.rect(screen, BLUE_ROBOT, (cx + 7, current_y + 20 - crouch_offset, 18, leg_height), border_radius=5)
 
-    
     txt_display = "SALTANDO" if is_jumping else action_str
-    txt = font.render(f"DETECCION CÁMARA: {txt_display}", True, BLUE_ROBOT if txt_display != "IDLE" else WHITE)
-    screen.blit(txt, txt.get_rect(center=(WIDTH // 2, HEIGHT - 30)))
 
+    if 'frame' in locals() and frame is not None:
+        frame_chico = cv2.resize(frame, (160, 120))
+        surface_camara = pygame.surfarray.make_surface(cv2.cvtColor(frame_chico, cv2.COLOR_BGR2RGB).swapaxes(0, 1))
+        screen.blit(surface_camara, (620, 20))
+        pygame.draw.rect(screen, (255, 255, 255), (618, 18, 164, 124), 2)
+
+    txt = font.render(f"DETECCION CAMARA: {txt_display}", True, BLUE_ROBOT if txt_display != "IDLE" else WHITE)
+    screen.blit(txt, txt.get_rect(center=(WIDTH // 2, HEIGHT - 30)))
     pygame.display.flip()
     clock.tick(30)
 
